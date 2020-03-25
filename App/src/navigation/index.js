@@ -3,6 +3,7 @@ import { createStackNavigator } from 'react-navigation-stack'
 
 import ViewActivities from '../pages/ViewActivities'
 import AddActivities  from '../pages/AddActivities'
+import ViewActivity   from '../pages/ViewActivity'
 
 const StackNavigator = createStackNavigator(
     {
@@ -11,7 +12,10 @@ const StackNavigator = createStackNavigator(
         },
         AddActivities: {
             screen: AddActivities
-        }
+        },
+        ViewActivity: {
+            screen: ViewActivity
+        },
     },
     {
         initialRouteName: 'ViewActivities',

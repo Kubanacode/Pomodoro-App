@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View } from 'react-native';
+import { View, TouchableOpacity } from 'react-native';
 import { Text, FAB, List } from 'react-native-paper';
 
 import styles from './styles';
@@ -19,19 +19,30 @@ const ViewActivities = ({navigation}) => {
                     (<Text style={styles.title}>You do not have any Activities</Text>) :
                     (<View style={styles.list}>
                         {activities.map((item, key) => (
-                            <View key={key} style={styles.listItems}>
+                            <TouchableOpacity 
+                                key={key}
+                                style={styles.listItems}
+                                onPress={() => navigation.navigate('ViewActivity', { activity: item })}
+                            >
                                 <View>
                                     <List.Icon  
                                         icon="timer"
                                         color="#2E7166"
                                     />
                                 </View>
-                                <View>
+                                <View style={styles.listInformations}>
                                     <Text style={styles.listTitle}>{item.actTitle}</Text>
-                                    <Text style={styles.listDescription}>{item.actValue}</Text>
+                                    {item.actValue ? 
+                                        (<Text 
+                                            style={styles.listDescription}
+                                            numberOfLines={1}
+                                        >
+                                            {item.actValue}
+                                        </Text>) :
+                                        (<></>)
+                                    }
                                 </View>
-                            
-                            </View>
+                            </TouchableOpacity>
                         )
                     )}</View>)
                 }

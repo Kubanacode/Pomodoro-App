@@ -35,6 +35,10 @@ const styles = StyleSheet.create({
         paddingVertical: 4,
         flexDirection: "row"
     },
+    listInformations: {
+        flex: 1,
+        justifyContent: "center",
+    },
     listTitle: {
         fontSize: 18,
         color: "#333"

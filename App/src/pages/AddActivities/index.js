@@ -9,7 +9,6 @@ const AddActivities = ({ navigation }) => {
     const [actValue, setActValue] = useState('');
 
     function onSaveActivity() {
-
         navigation.state.params.newActivity ({actTitle, actValue} );
         navigation.goBack();
     }
