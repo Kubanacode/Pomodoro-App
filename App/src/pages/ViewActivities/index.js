@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, FlatList } from 'react-native';
+import { View } from 'react-native';
 import { Text, FAB, List } from 'react-native-paper';
 
 import styles from './styles';
@@ -17,18 +17,23 @@ const ViewActivities = ({navigation}) => {
             <View style={styles.titleContainer}>
                 {activities.length === 0 ?
                     (<Text style={styles.title}>You do not have any Activities</Text>) :
-                    (<FlatList
-                        data={activities}
-                        renderItem={({ item }) => (
-                            <List.Item
-                                title={item.actTitle}
-                                description={item.actValue}
-                                descriptionNumberOfLines={1}
-                                left={props => <List.Icon {...props} icon="timer" />}
-                            />
-                        )}
-                        keyExtractor={item => item.id.toString()}
-                    />)
+                    (<View style={styles.list}>
+                        {activities.map((item, key) => (
+                            <View key={key} style={styles.listItems}>
+                                <View>
+                                    <List.Icon  
+                                        icon="timer"
+                                        color="#2E7166"
+                                    />
+                                </View>
+                                <View>
+                                    <Text style={styles.listTitle}>{item.actTitle}</Text>
+                                    <Text style={styles.listDescription}>{item.actValue}</Text>
+                                </View>
+                            
+                            </View>
+                        )
+                    )}</View>)
                 }
             </View>
             <FAB 
