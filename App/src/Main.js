@@ -6,10 +6,11 @@ import DrawerContent from './DrawerContent';
 
 const Drawer = createDrawerNavigator();
 
-const RootNavigator = () => (
-    <Drawer.Navigator drawerContent={props => <DrawerContent {...props} />}>
-        <Drawer.Screen name="Home" component={HomeStack} />
-    </Drawer.Navigator>
-)
-
+const RootNavigator = ({theme, toggleTheme}) => {    
+    return (
+        <Drawer.Navigator drawerContent={props => <DrawerContent theme={theme} {...props}  toggleTheme={toggleTheme} />}>
+            <Drawer.Screen name="Home" theme={theme} component={HomeStack} />
+        </Drawer.Navigator>
+    )
+}
 export default RootNavigator;

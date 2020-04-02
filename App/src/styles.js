@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         paddingVertical: 12,
-        paddingHorizontal: 16,
+        paddingHorizontal: 10,
     },
     header: {
         alignItems: "center"
@@ -21,13 +21,6 @@ const styles = StyleSheet.create({
     },
     headerTitle: {
         alignItems: "center"
-    },
-    bottomFab: {
-        position: 'absolute',
-        bottom: 100,
-        right: 16,
-        color: '#fff',
-        backgroundColor: "#cc1816"
     }
 });
 

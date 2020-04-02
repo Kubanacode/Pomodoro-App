@@ -4,8 +4,9 @@ import { Appbar, useTheme } from 'react-native-paper';
 import { createStackNavigator } from '@react-navigation/stack';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-import BottomTabs   from './bottomTabs';
-import styles       from './styles';
+import BottomTabs    from './bottomTabs';
+import SettingsSreen from './screens/Settings';
+import styles        from './styles';
 
 const Stack = createStackNavigator();
 
@@ -26,7 +27,7 @@ const Header = ({ scene, previous, navigation }) => {
         >
             {previous ? 
                 (<Appbar.BackAction 
-                    onPress={navigation.pop}
+                    onPress={navigation.goBack}
                     color={theme.colors.primary}
                 />) :
                 (<TouchableOpacity
@@ -37,13 +38,13 @@ const Header = ({ scene, previous, navigation }) => {
                     <Icon
                         style={styles.headerIcon}
                         name="bars"
-                        color="#cc1816"
+                        color={theme.colors.primary}
                         size={27}
                     />
                 </TouchableOpacity>)
             }
             <Appbar.Content 
-                color="#cc1816"
+                color={theme.colors.primary}
                 title={
                     previous ? title : "Pomodoro Manager"
                 }
@@ -66,6 +67,11 @@ const HomeStack = () => (
             name="Home"
             component={BottomTabs}
             options={{ headerTitle: 'Home' }}
+        />
+        <Stack.Screen 
+            name="Settings"
+            component={SettingsSreen}
+            options={{ headerTitle: 'Settings' }}
         />
     </Stack.Navigator>
 )
