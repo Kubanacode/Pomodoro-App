@@ -1,16 +1,14 @@
 import React from 'react';
 import { Provider as PaperProvider } from 'react-native-paper';
+import { NavigationContainer } from '@react-navigation/native';
+import Main from './src/Main';
 
-import AppNavigator from './src/navigation';
-import Header from './src/components/Header';
-
-const App = () => {
-    return (
-        <PaperProvider>
-            <Header titleText='Pomodoro Manager' />
-            <AppNavigator />
-        </PaperProvider>
-    );
-}
+const App = () => (
+    <PaperProvider>
+        <NavigationContainer>
+            <Main />
+        </NavigationContainer>
+    </PaperProvider>
+)
 
 export default App;
