@@ -13,7 +13,7 @@ const CombinedDefaultTheme = {
     colors: {
         ...PaperDefaultTheme.colors,
         ...DefaultTheme.colors,
-        primary: "#D32F2F",
+        primary: "#D33C2F",
         text: "rgba(28, 28, 30, 0.68)"
     }
 };
@@ -24,7 +24,7 @@ const CombinedDarkTheme = {
     colors: {
         ...PaperDarkTheme.colors,
         ...DarkTheme.colors,
-        primary: "#f74a4a",
+        primary: "#D33C2F",
         text: "rgb(229, 229, 231)",
         background: "#333",
         card: "#272729"

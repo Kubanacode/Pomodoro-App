@@ -6,6 +6,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 
 import BottomTabs    from './bottomTabs';
 import SettingsSreen from './screens/Settings';
+import AddActivity   from './screens/Activities/AddActivity';
 import styles        from './styles';
 
 const Stack = createStackNavigator();
@@ -72,6 +73,11 @@ const HomeStack = () => (
             name="Settings"
             component={SettingsSreen}
             options={{ headerTitle: 'Settings' }}
+        />
+        <Stack.Screen 
+            name="AddActivity"
+            component={AddActivity}
+            options={{ headerTitle: 'Add Activity' }}
         />
     </Stack.Navigator>
 )

@@ -2,7 +2,7 @@ import React from 'react';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { Portal, FAB, useTheme } from 'react-native-paper';
 import { useSafeArea } from 'react-native-safe-area-context';
-import { useIsFocused } from '@react-navigation/native';
+import { useIsFocused, useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 import Home         from './screens/Home';
@@ -11,10 +11,15 @@ import Search       from './screens/Search';
 
 const Tab = createMaterialBottomTabNavigator();
 
-const BottomTabs = () => {
+const BottomTabs = (props) => {
     const isFocused = useIsFocused();
     const safeArea = useSafeArea();
     const theme = useTheme();
+    const navigator = useNavigation();
+
+    const routeName = props.route.state
+    ? props.route.state.routes[props.route.state.index].name
+    : 'Home';
 
     return (
         <React.Fragment>
@@ -24,18 +29,18 @@ const BottomTabs = () => {
                 activeColor={theme.colors.primary}
             >
                 <Tab.Screen 
-                    name="Home"
-                    component={Home}
-                    options={{
-                        tabBarIcon: (() => (<Icon name="home" color={theme.colors.primary} size={25} />) ),
-                        tabBarColor: theme.colors.card
-                    }}
-                />
-                <Tab.Screen 
                     name="Profile"
                     component={Profile}
                     options={{
                         tabBarIcon: (() => (<Icon name="user" color={theme.colors.primary} size={25} />) ),
+                        tabBarColor: theme.colors.card
+                    }}
+                />
+                <Tab.Screen 
+                    name="Home"
+                    component={Home}
+                    options={{
+                        tabBarIcon: (() => (<Icon name="home" color={theme.colors.primary} size={25} />) ),
                         tabBarColor: theme.colors.card
                     }}
                 />
@@ -51,19 +56,24 @@ const BottomTabs = () => {
                     }}
                 />
             </Tab.Navigator>
-            <Portal>
-                <FAB
-                    visible={isFocused}
-                    icon="plus"
-                    color={theme.colors.card}
-                    style={{
-                        position: 'absolute',
-                        bottom: safeArea.bottom + 65,
-                        right: 16,
-                        backgroundColor: theme.colors.primary
-                    }}
-                />
-            </Portal>
+            {routeName === 'Home' ?
+                (<Portal>
+                    <FAB
+                        visible={isFocused}
+                        icon="plus"
+                        color={theme.colors.card}
+                        style={{
+                            position: 'absolute',
+                            bottom: safeArea.bottom + 65,
+                            right: 16,
+                            backgroundColor: theme.colors.primary
+                        }}
+                        onPress={() => navigator.navigate('AddActivity')}
+                    />
+                </Portal>) :
+                (<></>)
+            }
+            
         </React.Fragment>
     )
 }
